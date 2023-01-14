@@ -25,30 +25,23 @@ namespace Cainos.PixelArtTopDown_Basic
         private void Update()
         {
             Vector2 dir = Vector2.zero;
-            animator.SetBool("isRun", false);
 
             if (Input.GetKey(KeyCode.A))
             {
                 dir.x = -1;
-                transform.localScale = new Vector3(dir.x * scaleX, scaleY, scaleZ);
-                animator.SetBool("isRun", true);
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 dir.x = 1;
-                transform.localScale = new Vector3(dir.x * scaleX, scaleY, scaleZ);
-                animator.SetBool("isRun", true);
             }
 
             if (Input.GetKey(KeyCode.W))
             {
                 dir.y = 1;
-                animator.SetBool("isRun", true);
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 dir.y = -1;
-                animator.SetBool("isRun", true);
             }
 
             dir.Normalize();
