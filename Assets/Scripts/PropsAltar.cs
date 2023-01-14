@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//when something get into the alta, make the runes glow
+//when something get into the altar, make the runes glow
 namespace Cainos.PixelArtTopDown_Basic
 {
 
