@@ -9,10 +9,16 @@ namespace Cainos.PixelArtTopDown_Basic
         public float speed;
 
         private Animator animator;
+        private float scaleX;
+        private float scaleY;
+        private float scaleZ;
 
         private void Start()
         {
             animator = GetComponent<Animator>();
+            scaleX = transform.localScale.x;
+            scaleY = transform.localScale.y;
+            scaleZ = transform.localScale.z;
         }
 
 
@@ -24,13 +30,13 @@ namespace Cainos.PixelArtTopDown_Basic
             if (Input.GetKey(KeyCode.A))
             {
                 dir.x = -1;
-                transform.localScale = new Vector3(dir.x * 0.5f, 0.5f, 0.5f);
+                transform.localScale = new Vector3(dir.x * scaleX, scaleY, scaleZ);
                 animator.SetBool("isRun", true);
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 dir.x = 1;
-                transform.localScale = new Vector3(dir.x * 0.5f, 0.5f, 0.5f);
+                transform.localScale = new Vector3(dir.x * scaleX, scaleY, scaleZ);
                 animator.SetBool("isRun", true);
             }
 
