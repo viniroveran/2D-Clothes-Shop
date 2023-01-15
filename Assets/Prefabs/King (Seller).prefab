@@ -179,9 +179,10 @@ GameObject:
   - component: {fileID: 8926849269855861760}
   - component: {fileID: 8931339508047773597}
   - component: {fileID: 8931339508047773599}
+  - component: {fileID: 7269423753234603749}
   m_Layer: 0
   m_Name: King (Seller)
-  m_TagString: NPC
+  m_TagString: SellerNPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,6 +251,22 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!58 &7269423753234603749
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8931913572642704476}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.5}
+  serializedVersion: 2
+  m_Radius: 1.2
 --- !u!1 &8931923113656907552
 GameObject:
   m_ObjectHideFlags: 0

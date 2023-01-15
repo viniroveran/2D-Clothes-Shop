@@ -1003,6 +1003,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
+  isInInteractionRange: 0
+  canInteractWithSeller: 0
+  canInteractWithBuyer: 0
+  isClothesShopOpen: 0
+  isInventoryOpen: 0
   pauseMenu: {fileID: 4611517402291874303}
   clothesShopMenu: {fileID: 4611517401939217912}
   inventoryMenu: {fileID: 1947682697}
@@ -24624,9 +24629,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1947682697}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 92632024}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ToggleInventory
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36072,9 +36077,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4611517401939217912}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 92632024}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ToggleClothesShop
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
