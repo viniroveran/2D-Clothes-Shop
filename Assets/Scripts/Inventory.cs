@@ -1,16 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    // Gold UI
+    [SerializeField] private TextMeshProUGUI goldUI;
+    
     // List of item slots
     public List<ItemSlot> itemSlots;
     
     // List of empty slots
     [HideInInspector] public List<int> emptySlots = new List<int>();
 
-    public int gold;
+    // Player gold
+    private int _gold;
+    
+    // Reference to GameManager
     private GameManager _gameManager;
     
     // Creates an empty item slot
@@ -60,14 +68,28 @@ public class Inventory : MonoBehaviour
         // Sort the list so that we can always pick the first available slot to put an item in
         emptySlots.Sort();
     }
-    
-    public void AddGold(int amount)
+
+    // Get gold in inventory
+    public int GetGold()
     {
-        Debug.Log("Gold before: " + gold);
-        gold += amount;
-        Debug.Log("Added " + amount + " gold. Total: " + gold);
+        return _gold;
     }
     
+    // Add gold to inventory
+    public void AddGold(int amount)
+    {
+        Debug.Log("Gold before: " + _gold);
+        _gold += amount;
+        Debug.Log("Added " + amount + " gold. Total: " + _gold);
+    }
+    
+    // Remove gold from inventory
+    public void RemoveGold(int amount)
+    {
+        Debug.Log("Gold before: " + _gold);
+        _gold -= amount;
+        Debug.Log("Removed " + amount + " gold. Total: " + _gold);
+    }
     // Adds an item to the given slotIndex
     public void AddItem(int slotIndex, int itemID)
     {
@@ -136,5 +158,11 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         _gameManager = GameManager.Instance;
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        goldUI.text = "Gold: " + GetGold();
     }
 }
