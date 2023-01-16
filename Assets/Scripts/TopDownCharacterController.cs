@@ -45,11 +45,11 @@ public class TopDownCharacterController : MonoBehaviour
         {
             if (_gameManager.isInInteractionRange)
             {
-                // If the NPC is a buyer, open the inventory to sell our items
+                // If the NPC is a buyer, open the Clothes Buyer UI
                 if (_gameManager.canInteractWithBuyer)
-                    _gameManager.ToggleInventory(true);
+                    _gameManager.ToggleClothesBuyer(true);
 
-                // If the NPC is a seller, open the Clothes Shop
+                // If the NPC is a seller, open the Clothes Shop UI
                 if (_gameManager.canInteractWithSeller)
                     _gameManager.ToggleClothesShop(true);
             }
@@ -63,11 +63,9 @@ public class TopDownCharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             _gameManager.Pause(!_gameManager.isPaused);
 
-        // Make sure the cursor is always showing if the Inventory or Clothes Shop UI are open
-        if (_gameManager.isInventoryOpen || _gameManager.isClothesShopOpen)
-        {
+        // Make sure the cursor is always showing if the Inventory or Clothes Shop UI or Clothes Buyer UI are open
+        if (_gameManager.isInventoryOpen || _gameManager.isClothesShopOpen || _gameManager.isClothesBuyerOpen)
             _gameManager.ToggleCursor(true);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -93,6 +91,9 @@ public class TopDownCharacterController : MonoBehaviour
             
             if (_gameManager.isClothesShopOpen)
                 _gameManager.ToggleClothesShop(false);
+            
+            if (_gameManager.isClothesBuyerOpen)
+                _gameManager.ToggleClothesBuyer(false);
             
             if (_gameManager.isInventoryOpen)
                 _gameManager.ToggleInventory(false);

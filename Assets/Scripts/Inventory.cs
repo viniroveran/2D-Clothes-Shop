@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    // List of item slots
     public List<ItemSlot> itemSlots;
+    
     // List of empty slots
     [HideInInspector] public List<int> emptySlots = new List<int>();
 

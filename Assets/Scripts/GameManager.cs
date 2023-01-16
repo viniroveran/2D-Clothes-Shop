@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool canInteractWithSeller = false; // Is the player in interaction range with a seller?
     [HideInInspector] public bool canInteractWithBuyer = false; // Is the player in interaction range with a buyer?
     [HideInInspector] public bool isClothesShopOpen = false; // Is the clothes shop UI open?
+    [HideInInspector] public bool isClothesBuyerOpen = false; // Is the clothes buyer UI open?
     [HideInInspector] public bool isInventoryOpen = false; // Is the inventory UI open?
     
     [Header("Items")]
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     [Header("Menus")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject clothesShopMenu;
+    [SerializeField] private GameObject clothesBuyerMenu;
     [SerializeField] private GameObject inventoryMenu;
     
     [Header("Tooltips")]
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
         }
         
         // Cache list of item prefabs
-        ItemsDictionary = FindItems();
+        ItemsDictionary = FindAvailableItems();
     }
 
     private void Start()
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
         // Make sure UIs are not showing on startup
         pauseMenu.SetActive(false);
         clothesShopMenu.SetActive(false);
+        clothesBuyerMenu.SetActive(false);
         inventoryMenu.SetActive(false);
         interactionTooltip.SetActive(false);
         
@@ -87,6 +90,7 @@ public class GameManager : MonoBehaviour
             // Hide other UIs
             interactionTooltip.SetActive(false);
             clothesShopMenu.SetActive(false);
+            clothesBuyerMenu.SetActive(false);
             inventoryMenu.SetActive(false);
         }
         else
@@ -108,6 +112,10 @@ public class GameManager : MonoBehaviour
             // If player had the Clothes Shop open before pausing, open it again
             if (isClothesShopOpen)
                 ToggleClothesShop(true);
+            
+            // If player had the Clothes Buyer open before pausing, open it again
+            if (isClothesBuyerOpen)
+                ToggleClothesBuyer(true);
             
             // If player had the Inventory open before pausing, open it again
             if (isInventoryOpen)
@@ -135,6 +143,13 @@ public class GameManager : MonoBehaviour
         isClothesShopOpen = active;
         clothesShopMenu.SetActive(active);
     }
+    
+    public void ToggleClothesBuyer(bool active)
+    {
+        ToggleCursor(active);
+        isClothesBuyerOpen = active;
+        clothesBuyerMenu.SetActive(active);
+    }
 
     public void ToggleInventory(bool active)
     {
@@ -144,7 +159,7 @@ public class GameManager : MonoBehaviour
     }
     
     // Set available Items
-    private Dictionary<int, Item> FindItems()
+    private Dictionary<int, Item> FindAvailableItems()
     {
         ItemsDictionary[0] = null;
         // Creates a dictionary out of all item prefabs
