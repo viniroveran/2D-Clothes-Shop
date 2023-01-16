@@ -14,10 +14,17 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool canInteractWithBuyer = false; // Is the player in interaction range with a buyer?
     [HideInInspector] public bool isClothesShopOpen = false; // Is the clothes shop UI open?
     [HideInInspector] public bool isInventoryOpen = false; // Is the inventory UI open?
+    
+    [Header("Items")]
+    public List<Item> itemPrefabs = new List<Item>(); // List of item prefabs
+    public Dictionary<int, Item> ItemsDictionary = new Dictionary<int, Item>(); // Dictionary of available items
 
+    [Header("Menus")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject clothesShopMenu;
     [SerializeField] private GameObject inventoryMenu;
+    
+    [Header("Tooltips")]
     [SerializeField] private GameObject interactionTooltip;
 
     private void Awake()
@@ -31,6 +38,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
+        
+        // Cache list of item prefabs
+        ItemsDictionary = FindItems();
     }
 
     private void Start()
@@ -131,5 +141,18 @@ public class GameManager : MonoBehaviour
         ToggleCursor(active);
         isInventoryOpen = active;
         inventoryMenu.SetActive(active);
+    }
+    
+    // Set available Items
+    private Dictionary<int, Item> FindItems()
+    {
+        ItemsDictionary[0] = null;
+        // Creates a dictionary out of all item prefabs
+        foreach (Item item in itemPrefabs)
+        {
+            if (item != null)
+                ItemsDictionary[item.itemId] = item;
+        }
+        return ItemsDictionary;
     }
 }

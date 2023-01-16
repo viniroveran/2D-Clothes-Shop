@@ -182,6 +182,8 @@ GameObject:
   - component: {fileID: 1912246584748036872}
   - component: {fileID: 1912246584748036878}
   - component: {fileID: 1912246584748036874}
+  - component: {fileID: 6159261202514697716}
+  - component: {fileID: 5010244745233903670}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -310,6 +312,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &6159261202514697716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912945214751620212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c62c4305ce4644f91daa239585d25d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  emptySlots: 
+  gold: 0
+--- !u!114 &5010244745233903670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912945214751620212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1880bd3df0bc806438a48f912fd3c179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 6159261202514697716}
+  equippedHelmet: {fileID: 0}
+  helmetArray: []
+  equippedShoulders: {fileID: 0}
+  shouldersArray: []
+  equippedHArmor: {fileID: 0}
+  armorArray: []
+  initialGold: 500
 --- !u!1 &1912991064200059142
 GameObject:
   m_ObjectHideFlags: 0
