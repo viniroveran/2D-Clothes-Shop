@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null; // Reference to the singleton
-    public Player player; // Reference to the Player
     private AsyncOperation _asyncOperation;
     [HideInInspector] public bool isPaused; // Is the game paused?
     [HideInInspector] public bool isInInteractionRange = false; // Is the player in interaction range?
@@ -17,6 +16,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isClothesShopOpen = false; // Is the clothes shop UI open?
     [HideInInspector] public bool isClothesBuyerOpen = false; // Is the clothes buyer UI open?
     [HideInInspector] public bool isInventoryOpen = false; // Is the inventory UI open?
+    private float _purchaseTooltipTimer;
     
     [Header("Items")]
     public List<Item> itemPrefabs = new List<Item>(); // List of item prefabs
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Tooltips")]
     [SerializeField] private GameObject interactionTooltip;
-    public GameObject purchaseTooltip;
+    [SerializeField] private GameObject purchaseTooltip;
 
     private void Awake()
     {
@@ -163,7 +163,8 @@ public class GameManager : MonoBehaviour
     // Hide Purchase Tooltip after some time (in seconds)
     private void HidePurchaseTooltipAfterTime(float time)
     {
-        Invoke(nameof(HidePurchaseTooltip), time);
+        _purchaseTooltipTimer = time;
+        // Invoke(nameof(HidePurchaseTooltip), time);
     }
 
     // Show/hide ClothesShop UI
@@ -201,5 +202,14 @@ public class GameManager : MonoBehaviour
                 ItemsDictionary[item.itemId] = item;
         }
         return ItemsDictionary;
+    }
+
+    private void Update()
+    {
+        // Hide PurchaseTooltip if timer < 0
+        if (_purchaseTooltipTimer > 0)
+            _purchaseTooltipTimer -= Time.deltaTime;
+        else
+            purchaseTooltip.SetActive(false);
     }
 }
