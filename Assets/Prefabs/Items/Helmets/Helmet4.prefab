@@ -47,4 +47,5 @@ MonoBehaviour:
   itemId: 14
   itemType: 0
   itemName: Helmet 4
+  itemPrice: 40
   itemIcon: {fileID: 21300032, guid: f5f1c19ce87450f4b97f8b363746558d, type: 3}
