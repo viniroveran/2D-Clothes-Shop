@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null; // Reference to the singleton
+    public Player player; // Reference to the Player
     private AsyncOperation _asyncOperation;
     [HideInInspector] public bool isPaused; // Is the game paused?
     [HideInInspector] public bool isInInteractionRange = false; // Is the player in interaction range?
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Tooltips")]
     [SerializeField] private GameObject interactionTooltip;
+    public GameObject purchaseTooltip;
 
     private void Awake()
     {
@@ -59,6 +62,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    // Load MainMenu scene
     public void LoadMainMenu()
     {
         // If haven't tried to load anything yet, return
@@ -73,6 +77,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    // Pause/unpause the game
     public void Pause(bool paused)
     {        
         if (paused)
@@ -123,12 +128,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Show/hide Cursor
     public void ToggleCursor(bool active)
     {
         Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Confined;
         Cursor.visible = active;
     }
 
+    // Show/hide Interaction Tooltip
     public void ToggleInteractionTooltip(bool active, bool isSeller, bool isBuyer)
     {
         isInInteractionRange = active;
@@ -136,7 +143,30 @@ public class GameManager : MonoBehaviour
         canInteractWithBuyer = isBuyer;
         interactionTooltip.SetActive(active);
     }
+    
+    // Show Purchase Tooltip
+    public void ShowPurchaseTooltip(string message)
+    {
+        purchaseTooltip.SetActive(true);
+        purchaseTooltip.GetComponentInChildren<TextMeshProUGUI>().text = message;
+        
+        // Hide Purchase Tooltip after 5 seconds
+        HidePurchaseTooltipAfterTime(5.0f);
+    }
+    
+    // Hide Purchase Tooltip
+    private void HidePurchaseTooltip()
+    {
+        purchaseTooltip.SetActive(false);
+    }
+    
+    // Hide Purchase Tooltip after some time (in seconds)
+    private void HidePurchaseTooltipAfterTime(float time)
+    {
+        Invoke(nameof(HidePurchaseTooltip), time);
+    }
 
+    // Show/hide ClothesShop UI
     public void ToggleClothesShop(bool active)
     {
         ToggleCursor(active);
@@ -144,6 +174,7 @@ public class GameManager : MonoBehaviour
         clothesShopMenu.SetActive(active);
     }
     
+    // Show/hide ClothesBuyer UI
     public void ToggleClothesBuyer(bool active)
     {
         ToggleCursor(active);
@@ -151,6 +182,7 @@ public class GameManager : MonoBehaviour
         clothesBuyerMenu.SetActive(active);
     }
 
+    // Show/hide Inventory UI
     public void ToggleInventory(bool active)
     {
         ToggleCursor(active);

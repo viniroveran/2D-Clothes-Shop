@@ -95,8 +95,8 @@ public class TopDownCharacterController : MonoBehaviour
             if (_gameManager.isClothesBuyerOpen)
                 _gameManager.ToggleClothesBuyer(false);
             
-            if (_gameManager.isInventoryOpen)
-                _gameManager.ToggleInventory(false);
+            // if (_gameManager.isInventoryOpen)
+            //     _gameManager.ToggleInventory(false);
             
             Debug.Log("Moved away from NPC!");
         }

@@ -5,7 +5,6 @@ using UnityEngine;
 public enum ItemType
 {
     Helmet,
-    Shoulders,
     Armor
 }
 
@@ -15,5 +14,6 @@ public class Item : MonoBehaviour
     public int itemId;
     public ItemType itemType;
     public string itemName;
+    public int itemPrice;
     public Sprite itemIcon;
 }

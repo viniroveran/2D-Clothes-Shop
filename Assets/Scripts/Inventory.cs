@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Inventory : MonoBehaviour
 {
+    // Reference to Player
+    public Player player;
     // Gold UI
     [SerializeField] private TextMeshProUGUI goldUI;
     
@@ -30,7 +33,9 @@ public class Inventory : MonoBehaviour
         {
             itemSlot.gameObject.SetActive(true);
             itemSlot.item = null;
-            itemSlot.slotItemIcon.enabled = false;
+            itemSlot.slotIcon.enabled = false;
+            // Set item name
+            itemSlot.itemNameText.text = "";
             itemSlot.isEmpty = true;
             // Remove item slot button action
             itemSlot.PrepareButton(true);
@@ -42,7 +47,10 @@ public class Inventory : MonoBehaviour
     {
         // Initialize the inventory with empty items
         foreach (ItemSlot slot in itemSlots)
+        {
+            slot.player = player;
             CreateEmptyItemSlot(slot);
+        }
 
         UpdateAvailableSlots();
     }
@@ -102,8 +110,11 @@ public class Inventory : MonoBehaviour
             itemSlots[slotIndex].isEmpty = false;
             
             // Set item icon
-            itemSlots[slotIndex].slotItemIcon.enabled = true;
-            itemSlots[slotIndex].slotItemIcon.sprite = itemSlots[slotIndex].item.itemIcon;
+            itemSlots[slotIndex].slotIcon.enabled = true;
+            itemSlots[slotIndex].slotIcon.sprite = itemSlots[slotIndex].item.itemIcon;
+            
+            // Set item name
+            itemSlots[slotIndex].itemNameText.text = itemSlots[slotIndex].item.itemName;
             
             // Add item slot button action
             itemSlots[slotIndex].PrepareButton(false);
@@ -117,41 +128,38 @@ public class Inventory : MonoBehaviour
             Debug.LogError("Slot " + slotIndex + " not empty.");
     }
 
-    // Gets Item object from given slotIndex 
-    public Item GetItemFromSlot(int slotIndex)
-    {
-        return itemSlots[slotIndex].item == null ? null : itemSlots[slotIndex].item;
-    }
-    
-    // Gets itemID from given slotIndex
-    public int GetItemIDFromSlot(int slotIndex)
-    {
-        if (itemSlots[slotIndex].item == null)
-            return 0;
-
-        return itemSlots[slotIndex].item.itemId;
-    }
-
-    // Gets itemID from dictionary of items
-    private Item GetItemFromID(int itemID)
-    {
-        return itemID == 0 ? null : _gameManager.ItemsDictionary[itemID];
-    }
-    
     // Remove item from inventory
     public void RemoveItem(int slotIndex)
     {
         // item could not be found
         if (slotIndex == -1)
             return;
+        
+        Debug.Log("Removing: " + itemSlots[slotIndex].item.itemName + " | Slot: " + slotIndex);
 
         // Create an empty slot where the item was
         CreateEmptyItemSlot(itemSlots[slotIndex]);
 
         // Update the empty slots
         UpdateAvailableSlots();
+    }
+    
+    // Find item in inventory and returns it's position in inventory
+    public int HasItem(Item item)
+    {
+        foreach (ItemSlot slot in itemSlots)
+        {
+            if ((slot.item != null) && (slot.item.itemId == item.itemId))
+                return slot.slotId;
+        }
         
-        Debug.Log("Removed: " + itemSlots[slotIndex].item.itemName + " | Slot: " + slotIndex);
+        return -1;
+    }
+
+    // Gets itemID from dictionary of items
+    private Item GetItemFromID(int itemID)
+    {
+        return itemID == 0 ? null : _gameManager.ItemsDictionary[itemID];
     }
 
     // Start is called before the first frame update

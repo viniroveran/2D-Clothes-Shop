@@ -1,31 +1,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    private Inventory _inventory;
-    private Player _player;
+    [HideInInspector] public Player player;
     
     // Slot info
     public int slotId;
     public bool isEmpty = false;
-    
-    // Slot item icon
-    public Image slotItemIcon;
+    public Image slotIcon;
     
     // Item in slot
     public Item item;
     
     // Slot item button
     private Button _slotItemButton;
+    
+    // Slot item price
+    public TextMeshProUGUI itemNameText;
 
     private void Awake()
     {
-        _player = GetComponentInParent<Player>();
+        itemNameText.text = "";
+        player = GetComponentInParent<Player>();
         _slotItemButton = GetComponentInChildren<Button>();
     }
 
@@ -40,22 +42,16 @@ public class ItemSlot : MonoBehaviour
             switch (item.itemType)
             {
                 case ItemType.Helmet:
-                    // Equip new item
-                    _slotItemButton.onClick.AddListener(delegate { _player.EquipHelmetSlot(item); });
+                    // Equip new item on click
+                    _slotItemButton.onClick.AddListener(delegate { player.EquipHelmetSlot(item); });
                     break;
-                
-                case ItemType.Shoulders:
-                    // Equip new item
-                    _slotItemButton.onClick.AddListener(delegate { _player.EquipShouldersSlot(item); });
-                    break;
-                
                 case ItemType.Armor:
-                    // Equip new item
-                    _slotItemButton.onClick.AddListener(delegate { _player.EquipArmorSlot(item); });
+                    // Equip new item on click
+                    _slotItemButton.onClick.AddListener(delegate { player.EquipArmorSlot(item); });
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            // Add onClick action to remove item from that slot
-            _slotItemButton.onClick.AddListener(delegate { _inventory.RemoveItem(slotId); });
         }
     }
 }
