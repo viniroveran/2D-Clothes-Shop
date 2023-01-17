@@ -99,12 +99,12 @@ public class Inventory : MonoBehaviour
         Debug.Log("Removed " + amount + " gold. Total: " + _gold);
     }
     // Adds an item to the given slotIndex
-    public void AddItem(int slotIndex, int itemID)
+    public void AddItem(int slotIndex, Item item)
     {
         if (itemSlots[slotIndex].isEmpty)
         {
             // Set which item is inside that slot
-            itemSlots[slotIndex].item = GetItemFromID(itemID);
+            itemSlots[slotIndex].item = item;
 
             // Set the slot to NOT empty
             itemSlots[slotIndex].isEmpty = false;
@@ -159,6 +159,7 @@ public class Inventory : MonoBehaviour
     // Gets itemID from dictionary of items
     private Item GetItemFromID(int itemID)
     {
+        Debug.Log(itemID);
         return itemID == 0 ? null : _gameManager.ItemsDictionary[itemID];
     }
 

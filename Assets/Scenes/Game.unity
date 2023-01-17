@@ -12083,6 +12083,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 1755317001}
   item: {fileID: 0}
+  slotItemButton: {fileID: 1908961904}
   itemNameText: {fileID: 1862091124}
 --- !u!1001 &470199497
 PrefabInstance:
@@ -13445,6 +13446,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 1506161639}
   item: {fileID: 0}
+  slotItemButton: {fileID: 1714679104}
   itemNameText: {fileID: 1792821404}
 --- !u!1001 &567302881
 PrefabInstance:
@@ -13587,6 +13589,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 823572221}
   item: {fileID: 0}
+  slotItemButton: {fileID: 1635048729}
   itemNameText: {fileID: 1530587944}
 --- !u!1001 &571368246
 PrefabInstance:
@@ -16249,6 +16252,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 176743662}
   item: {fileID: 0}
+  slotItemButton: {fileID: 1429128024}
   itemNameText: {fileID: 1572788451}
 --- !u!1 &752784755
 GameObject:
@@ -17416,6 +17420,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 1442555672}
   item: {fileID: 0}
+  slotItemButton: {fileID: 258780856}
   itemNameText: {fileID: 2060238039}
 --- !u!1 &848605617
 GameObject:
@@ -19741,6 +19746,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 970810819}
   item: {fileID: 0}
+  slotItemButton: {fileID: 1602003233}
   itemNameText: {fileID: 699048494}
 --- !u!1001 &1028230306
 PrefabInstance:
@@ -27415,6 +27421,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 107989786}
   item: {fileID: 0}
+  slotItemButton: {fileID: 1737640180}
   itemNameText: {fileID: 649447}
 --- !u!1001 &1320192794
 PrefabInstance:
@@ -30864,6 +30871,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 807172986}
   item: {fileID: 0}
+  slotItemButton: {fileID: 1688555783}
   itemNameText: {fileID: 243020879}
 --- !u!1 &1552723857
 GameObject:
@@ -34865,6 +34873,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 1091715570}
   item: {fileID: 0}
+  slotItemButton: {fileID: 1541872359}
   itemNameText: {fileID: 1603610292}
 --- !u!1001 &1792152447
 PrefabInstance:
@@ -36166,6 +36175,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 1585376441}
   item: {fileID: 0}
+  slotItemButton: {fileID: 1429179744}
   itemNameText: {fileID: 329157722}
 --- !u!1 &1885279991
 GameObject:
@@ -38164,6 +38174,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 1487502099}
   item: {fileID: 0}
+  slotItemButton: {fileID: 522858526}
   itemNameText: {fileID: 1006235497}
 --- !u!1 &2060238037
 GameObject:
@@ -38357,6 +38368,7 @@ MonoBehaviour:
   isEmpty: 1
   slotIcon: {fileID: 849471736}
   item: {fileID: 0}
+  slotItemButton: {fileID: 841147684}
   itemNameText: {fileID: 1561558165}
 --- !u!1 &2087542564
 GameObject:
@@ -40474,78 +40486,7 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 1947682699}
-    - target: {fileID: 5010244745233903670, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: initialGold
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: goldUI
-      value: 
-      objectReference: {fileID: 396487546}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[0]
-      value: 
-      objectReference: {fileID: 2045454654}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[1]
-      value: 
-      objectReference: {fileID: 747474626}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[2]
-      value: 
-      objectReference: {fileID: 560466076}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[3]
-      value: 
-      objectReference: {fileID: 568045114}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[4]
-      value: 
-      objectReference: {fileID: 1009747989}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[5]
-      value: 
-      objectReference: {fileID: 1770936547}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[6]
-      value: 
-      objectReference: {fileID: 465267697}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[7]
-      value: 
-      objectReference: {fileID: 844027024}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[8]
-      value: 
-      objectReference: {fileID: 1316912181}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[9]
-      value: 
-      objectReference: {fileID: 1879144766}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[10]
-      value: 
-      objectReference: {fileID: 2084669232}
-    - target: {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1,
-        type: 3}
-      propertyPath: itemSlots.Array.data[11]
-      value: 
-      objectReference: {fileID: 1544971468}
-    m_RemovedComponents:
-    - {fileID: 6159261202514697716, guid: fdb1072571a7ac94db97dab03a3767e1, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdb1072571a7ac94db97dab03a3767e1, type: 3}
 --- !u!1001 &2137395896942627639
 PrefabInstance:

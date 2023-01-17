@@ -26,12 +26,12 @@ public class ShopSlot : MonoBehaviour
     {
         _itemPriceText = GetComponentInChildren<TextMeshProUGUI>();
         _itemPriceText.text = item.itemPrice + " gold";
-        _slotItemButton = GetComponentInChildren<Button>();
         slotIcon.sprite = item.itemIcon;
     }
 
     public void PrepareBuyButton()
     {
+        _slotItemButton = GetComponentInChildren<Button>();
         // Clear any action already set to the button
         _slotItemButton.onClick.RemoveAllListeners();
         
@@ -41,6 +41,7 @@ public class ShopSlot : MonoBehaviour
     
     public void PrepareSellButton()
     {
+        _slotItemButton = GetComponentInChildren<Button>();
         // Clear any action already set to the button
         _slotItemButton.onClick.RemoveAllListeners();
         

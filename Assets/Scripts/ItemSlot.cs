@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    [HideInInspector] public Player player;
+    public Player player;
     
     // Slot info
     public int slotId;
@@ -24,15 +24,9 @@ public class ItemSlot : MonoBehaviour
     // Slot item price
     public TextMeshProUGUI itemNameText;
 
-    private void Awake()
-    {
-        itemNameText.text = "";
-        player = GetComponentInParent<Player>();
-        _slotItemButton = GetComponentInChildren<Button>();
-    }
-
     public void PrepareButton(bool clearOnly)
     {
+        _slotItemButton = GetComponentInChildren<Button>();
         // Clear any action already set to the button
         _slotItemButton.onClick.RemoveAllListeners();
 

@@ -12,11 +12,9 @@ public class Player : MonoBehaviour
     private GameManager _gameManager;
     // Reference to Inventory
     [SerializeField] private Inventory inventory;
-    
-    // Player equipped helmet
-    public Item equippedHelmet;
-    // Player equipped armor
-    public Item equippedArmor;
+
+    [SerializeField] private SpriteRenderer helmet;
+    [SerializeField] private SpriteRenderer armor;
 
     [SerializeField] private int initialGold;
 
@@ -33,6 +31,7 @@ public class Player : MonoBehaviour
     // Equip new item on Helmet Slot
     public void EquipHelmetSlot(Item item)
     {
+        helmet.sprite = item.itemIcon;
         Debug.Log("Equipping (helmet) " + item.itemName);
         // Update displayed item on player
     }
@@ -40,6 +39,7 @@ public class Player : MonoBehaviour
     // Equip new item on Armor Slot
     public void EquipArmorSlot(Item item)
     {
+        armor.sprite = item.itemIcon;
         Debug.Log("Equipping (armor) " + item.itemName);
         // Update displayed item on player
     }
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         if (inventory.GetGold() > item.itemPrice)
         {
             inventory.RemoveGold(item.itemPrice);
-            inventory.AddItem(inventory.emptySlots.First(), item.itemId);
+            inventory.AddItem(inventory.emptySlots.First(), item);
             _gameManager.ShowPurchaseTooltip("Bought a new " + item.itemName + " for " + item.itemPrice + " gold coins");
             Debug.Log("Player bought " + item.itemName + " for " + item.itemPrice);
             return;
